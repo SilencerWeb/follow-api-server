@@ -15,5 +15,8 @@
     "start": "nodemon src/index.js",
     "deploy:p": "prisma deploy -f",
     "get-schema": "graphql get-schema -p prisma"
+  },
+  "resolutions": {
+    "graphql": "14.0.2"
   }
 }
