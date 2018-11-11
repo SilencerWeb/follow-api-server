@@ -1,5 +1,6 @@
 const user = (_, args, context, info) => {
-  return context.prisma.query.user(
+  
+  return context.prisma.user(
     {
       where: {
         username: args.username,
@@ -10,7 +11,8 @@ const user = (_, args, context, info) => {
 };
 
 const users = (_, args, context, info) => {
-  return context.prisma.query.users(
+  
+  return context.prisma.users(
     {
       where: {},
     },

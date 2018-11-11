@@ -1,6 +1,6 @@
 const createUser = (_, args, context, info) => {
 
-  return context.prisma.mutation.createUser(
+  return context.prisma.createUser(
     {
       data: {
         name: 'Name',
@@ -15,7 +15,7 @@ const createUser = (_, args, context, info) => {
 
 const updateUser = (_, args, context, info) => {
 
-  return context.prisma.mutation.updateUser(
+  return context.prisma.updateUser(
     {
       where: {
         id: args.id,
@@ -30,7 +30,7 @@ const updateUser = (_, args, context, info) => {
 
 const deleteUser = async(_, args, context, info) => {
 
-  return context.prisma.mutation.deleteUser(
+  return context.prisma.deleteUser(
     {
       where: {
         id: args.id,

@@ -1,4 +1,15 @@
-# import User from './generated/prisma.graphql'
+scalar DateTime
+
+type User {
+  id: ID!
+  name: String!
+  username: String!
+  description: String!
+  avatarUrl: String
+  isApproved: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
 
 type Query {
   user(username: String!): User!
