@@ -121,6 +121,7 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
+  username?: String;
 }>;
 
 export interface UserWhereInput {
