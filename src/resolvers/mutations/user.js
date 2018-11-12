@@ -1,11 +1,28 @@
-const createUser = (_, args, context, info) => {
+const { twitterClient } = require('../../twitter-client');
+
+
+const createUser = async(_, args, context, info) => {
+  let name, username, description, avatarUrl;
+
+  await twitterClient.get('users/show', { screen_name: args.username })
+    .catch((error) => {
+      throw new Error(error.message);
+    })
+    .then((result) => {
+      name = result.data.name;
+      username = result.data.screen_name;
+      description = result.data.description;
+      avatarUrl = result.data.profile_image_url_https;
+
+      return true;
+    });
 
   return context.prisma.createUser(
     {
-      name: 'Name',
-      username: args.username,
-      description: 'Description',
-      avatarUrl: 'avatar url',
+      name: name,
+      username: username,
+      description: description,
+      avatarUrl: avatarUrl,
     },
   );
 };
