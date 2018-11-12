@@ -38,7 +38,9 @@ const createUser = async(_, args, context, info) => {
       username: args.username.toLowerCase(),
       description: description,
       avatarUrl: avatarUrl,
-      interests: args.interests.map((interest) => interest.toLowerCase()),
+      interests: {
+        set: args.interests.map((interest) => interest.toLowerCase()),
+      },
     },
   );
 };
