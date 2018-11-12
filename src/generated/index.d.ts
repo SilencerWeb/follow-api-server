@@ -223,7 +223,12 @@ export interface UserCreateInput {
   username: String;
   description: String;
   avatarUrl?: String;
+  interests?: UserCreateinterestsInput;
   isApproved?: Boolean;
+}
+
+export interface UserCreateinterestsInput {
+  set?: String[] | String;
 }
 
 export interface UserUpdateInput {
@@ -231,7 +236,12 @@ export interface UserUpdateInput {
   username?: String;
   description?: String;
   avatarUrl?: String;
+  interests?: UserUpdateinterestsInput;
   isApproved?: Boolean;
+}
+
+export interface UserUpdateinterestsInput {
+  set?: String[] | String;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -239,6 +249,7 @@ export interface UserUpdateManyMutationInput {
   username?: String;
   description?: String;
   avatarUrl?: String;
+  interests?: UserUpdateinterestsInput;
   isApproved?: Boolean;
 }
 
@@ -263,6 +274,7 @@ export interface User {
   username: String;
   description: String;
   avatarUrl?: String;
+  interests: String[];
   isApproved?: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -274,6 +286,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   username: () => Promise<String>;
   description: () => Promise<String>;
   avatarUrl: () => Promise<String>;
+  interests: () => Promise<String[]>;
   isApproved: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -287,6 +300,7 @@ export interface UserSubscription
   username: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   avatarUrl: () => Promise<AsyncIterator<String>>;
+  interests: () => Promise<AsyncIterator<String[]>>;
   isApproved: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -410,6 +424,7 @@ export interface UserPreviousValues {
   username: String;
   description: String;
   avatarUrl?: String;
+  interests: String[];
   isApproved?: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -423,6 +438,7 @@ export interface UserPreviousValuesPromise
   username: () => Promise<String>;
   description: () => Promise<String>;
   avatarUrl: () => Promise<String>;
+  interests: () => Promise<String[]>;
   isApproved: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -436,6 +452,7 @@ export interface UserPreviousValuesSubscription
   username: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   avatarUrl: () => Promise<AsyncIterator<String>>;
+  interests: () => Promise<AsyncIterator<String[]>>;
   isApproved: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;

@@ -54,6 +54,7 @@ type User {
   username: String!
   description: String!
   avatarUrl: String
+  interests: [String!]!
   isApproved: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -70,7 +71,12 @@ input UserCreateInput {
   username: String!
   description: String!
   avatarUrl: String
+  interests: UserCreateinterestsInput
   isApproved: Boolean
+}
+
+input UserCreateinterestsInput {
+  set: [String!]
 }
 
 type UserEdge {
@@ -103,6 +109,7 @@ type UserPreviousValues {
   username: String!
   description: String!
   avatarUrl: String
+  interests: [String!]!
   isApproved: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -131,7 +138,12 @@ input UserUpdateInput {
   username: String
   description: String
   avatarUrl: String
+  interests: UserUpdateinterestsInput
   isApproved: Boolean
+}
+
+input UserUpdateinterestsInput {
+  set: [String!]
 }
 
 input UserUpdateManyMutationInput {
@@ -139,6 +151,7 @@ input UserUpdateManyMutationInput {
   username: String
   description: String
   avatarUrl: String
+  interests: UserUpdateinterestsInput
   isApproved: Boolean
 }
 

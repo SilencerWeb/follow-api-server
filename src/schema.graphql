@@ -6,6 +6,7 @@ type User {
   username: String!
   description: String!
   avatarUrl: String
+  interests: [String!]!
   isApproved: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -17,7 +18,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(username: String!): User!
+  createUser(username: String! interests: [String!]!): User!
   updateUser(id: String username: String isApproved: Boolean!): User!
   deleteUser(id: String username: String): User!
 }

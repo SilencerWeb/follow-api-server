@@ -12,7 +12,7 @@ const createUser = async(_, args, context, info) => {
     throw new Error(`User with username "${args.username}" already exists`);
   }
 
-  let name, username, description, avatarUrl;
+  let name, description, avatarUrl;
 
   await twitterClient.get('users/show', { screen_name: args.username })
     .catch((error) => {
@@ -26,7 +26,6 @@ const createUser = async(_, args, context, info) => {
     })
     .then((result) => {
       name = result.data.name;
-      username = result.data.screen_name.toLowerCase();
       description = result.data.description;
       avatarUrl = result.data.profile_image_url_https;
 
@@ -36,9 +35,10 @@ const createUser = async(_, args, context, info) => {
   return context.prisma.createUser(
     {
       name: name,
-      username: username,
+      username: args.username.toLowerCase(),
       description: description,
       avatarUrl: avatarUrl,
+      interests: args.interests.map((interest) => interest.toLowerCase()),
     },
   );
 };
