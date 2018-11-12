@@ -2,14 +2,11 @@ const createUser = (_, args, context, info) => {
 
   return context.prisma.createUser(
     {
-      data: {
-        name: 'Name',
-        username: args.username,
-        description: 'description',
-        avatarUrl: 'avatar url',
-      },
+      name: 'Name',
+      username: args.username,
+      description: 'Description',
+      avatarUrl: 'avatar url',
     },
-    info,
   );
 };
 
@@ -24,7 +21,6 @@ const updateUser = (_, args, context, info) => {
         isApproved: args.isApproved,
       },
     },
-    info,
   );
 };
 
@@ -32,11 +28,8 @@ const deleteUser = async(_, args, context, info) => {
 
   return context.prisma.deleteUser(
     {
-      where: {
-        id: args.id,
-      },
+      id: args.id,
     },
-    info,
   );
 };
 
